@@ -1,0 +1,9 @@
+package tn.projetStage.entities;
+
+public enum Role {
+    ADMIN,
+    TECHNICIEN_MAINTENANCE,
+    CHEF_SERVICE_MAINTENANCE,
+    CHEF_SERVICE_HOSPITALIER,
+    CHEF_SERVICE_MAGASIN
+}
