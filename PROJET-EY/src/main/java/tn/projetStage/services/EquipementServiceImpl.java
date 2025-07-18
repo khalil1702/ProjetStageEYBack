@@ -33,4 +33,9 @@ public class EquipementServiceImpl implements EquipementService {
     public void deleteEquipement(Long id) {
         equipementRepository.deleteById(id);
     }
+
+    @Override
+    public void updateEquipement(Long id, Equipement updatedEquipement) {
+
+    }
 }

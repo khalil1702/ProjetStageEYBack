@@ -20,7 +20,6 @@ public class Equipement {
     private Long id;
 
     private String nom;
-    private String image;
 
     @Enumerated(EnumType.STRING)
     private Etat etat;

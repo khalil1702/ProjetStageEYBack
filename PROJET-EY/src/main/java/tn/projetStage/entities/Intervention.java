@@ -21,6 +21,8 @@ public class Intervention {
     private String description;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 50) // ← indique la taille dans l'entité pour Hibernate
+
     private TypeIntervention typeIntervention;
 
     @ManyToOne

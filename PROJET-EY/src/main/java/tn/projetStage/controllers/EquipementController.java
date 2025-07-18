@@ -51,4 +51,11 @@ public class EquipementController {
     public void delete(@PathVariable Long id) {
         equipementService.deleteEquipement(id);
     }
+    @PutMapping("/{id}")
+    public Equipement update(@PathVariable Long id, @RequestBody Equipement equipement) {
+        equipement.setId(id);
+        return equipementService.saveEquipement(equipement);
+    }
+
+
 }

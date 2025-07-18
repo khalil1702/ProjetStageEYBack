@@ -25,6 +25,7 @@ public class User {
 
 
 
+    private Boolean status;
 
 
 

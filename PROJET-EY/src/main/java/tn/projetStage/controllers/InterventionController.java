@@ -1,6 +1,7 @@
 package tn.projetStage.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.projetStage.entities.Intervention;
 import tn.projetStage.entities.User;
@@ -13,7 +14,7 @@ import tn.projetStage.repositories.InterventionRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/interventions")
+@RequestMapping("/auth/api/interventions")
 @CrossOrigin(origins = "http://localhost:4200")
 public class InterventionController {
 
@@ -52,6 +53,17 @@ public class InterventionController {
         } else {
             throw new RuntimeException("Accès refusé : seul un ADMIN ou un TECHNICIEN peut faire une intervention.");
         }
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Intervention> update(@PathVariable Long id, @RequestBody Intervention interventionDetails) {
+        return interventionRepository.findById(id)
+                .map(intervention -> {
+                    intervention.setDate(interventionDetails.getDate());
+                    intervention.setDescription(interventionDetails.getDescription());
+                    intervention.setTypeIntervention(interventionDetails.getTypeIntervention());
+                    Intervention updated = interventionRepository.save(intervention);
+                    return ResponseEntity.ok(updated);
+                }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")

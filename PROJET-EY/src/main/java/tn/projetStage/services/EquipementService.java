@@ -9,4 +9,6 @@ public interface EquipementService {
     Equipement getEquipementById(Long id);
     Equipement saveEquipement(Equipement equipement);
     void deleteEquipement(Long id);
+
+    void updateEquipement(Long id, Equipement updatedEquipement);
 }
