@@ -3,6 +3,7 @@ package tn.projetStage.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDate;
 
 import java.util.Date;
 import java.util.List;
@@ -31,6 +32,10 @@ public class Equipement {
     private String serviceAffecte;
     private Date dateMiseEnService;
     private Date dateProchaineMaintenance;
+
+    private String modele;
+
+    private LocalDate dateAcquisition;
 
     @OneToMany(mappedBy = "equipement", cascade = CascadeType.ALL)
     @JsonIgnore
