@@ -4,9 +4,12 @@ package tn.projetStage.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.projetStage.entities.Equipement;
+import tn.projetStage.entities.Etat;
 import tn.projetStage.repositories.EquipementRepository;
 
 import java.util.List;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class EquipementServiceImpl implements EquipementService {
@@ -38,4 +41,10 @@ public class EquipementServiceImpl implements EquipementService {
     public void updateEquipement(Long id, Equipement updatedEquipement) {
 
     }
+    @Override
+    public List<Equipement> getDerniersEquipementsEnMaintenance(int limit) {
+        Pageable pageable = PageRequest.of(0, limit);
+        return equipementRepository.findByEtatOrderByDateProchaineMaintenanceDesc(Etat.EN_MAINTENANCE, pageable);
+    }
+
 }

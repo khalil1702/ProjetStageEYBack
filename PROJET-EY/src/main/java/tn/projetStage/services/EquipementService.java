@@ -11,4 +11,6 @@ public interface EquipementService {
     void deleteEquipement(Long id);
 
     void updateEquipement(Long id, Equipement updatedEquipement);
+
+    List<Equipement> getDerniersEquipementsEnMaintenance(int limit);
 }

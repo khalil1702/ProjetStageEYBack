@@ -12,6 +12,8 @@ import tn.projetStage.repositories.UserRepository;
 
 import java.util.List;
 import java.util.Set;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 @RestController
 @RequestMapping("/auth/api/equipements")
@@ -57,5 +59,10 @@ public class EquipementController {
         return equipementService.saveEquipement(equipement);
     }
 
+    @GetMapping("/maintenance-recente")
+    public List<Equipement> getDerniersEquipementsEnMaintenance() {
+        // Limite à 3 équipements en état "EN_MAINTENANCE", triés par date de maintenance décroissante
+        return equipementService.getDerniersEquipementsEnMaintenance(3);
+    }
 
 }

@@ -164,4 +164,25 @@ public class AuthController {
         }
     }
 
+    @PutMapping("/update-profile/{id}")
+    public ResponseEntity<?> updateProfile(@PathVariable Long id, @RequestBody User updatedData) {
+        User existingUser = userRepository.findById(id).orElse(null);
+        if (existingUser == null) {
+            return ResponseEntity.status(404).body("Utilisateur non trouvé.");
+        }
+
+        // On ne touche pas au mot de passe ni au rôle
+        existingUser.setCin(updatedData.getCin());
+        existingUser.setNom(updatedData.getNom());
+        existingUser.setEmail(updatedData.getEmail());
+        existingUser.setImage(updatedData.getImage());
+
+        userRepository.save(existingUser);
+
+        // Par sécurité, on retire le mot de passe de la réponse
+        existingUser.setPassword(null);
+
+        return ResponseEntity.ok(existingUser);
+    }
+
 }

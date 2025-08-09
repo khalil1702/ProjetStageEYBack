@@ -25,6 +25,54 @@ public class Intervention {
 
     private TypeIntervention typeIntervention;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TypeIntervention getTypeIntervention() {
+        return typeIntervention;
+    }
+
+    public void setTypeIntervention(TypeIntervention typeIntervention) {
+        this.typeIntervention = typeIntervention;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Equipement getEquipement() {
+        return equipement;
+    }
+
+    public void setEquipement(Equipement equipement) {
+        this.equipement = equipement;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
